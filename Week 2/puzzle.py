@@ -1,3 +1,4 @@
+
 class Node:
     def __init__(self, data, level, fval):
         """ Initialize the node with the data, level of the node and the calculated fvalue """
@@ -81,9 +82,9 @@ class Puzzle:
 
     def process(self):
         """ Accept Start and Goal Puzzle state"""
-        print("Enter the start state matrix \n")
+        print("\nThe Heuristic Function is used here!\nEnter the start state matrix \n")
         start = self.accept()
-        print("Enter the goal state matrix \n")
+        print("\n\nEnter the goal state matrix \n")
         goal = self.accept()
 
         start = Node(start, 0, 0)
@@ -91,8 +92,10 @@ class Puzzle:
         """ Put the start node in the open list"""
         self.open.append(start)
         print("\n\n")
+        count = 0
         while True:
             cur = self.open[0]
+            count = count + 1
             print("")
             print("  | ")
             print("  | ")
@@ -101,9 +104,13 @@ class Puzzle:
                 for j in i:
                     print(j, end=" ")
                 print("")
+
+            
+                
             """ If the difference between current and goal node is 0 we have reached the goal node"""
             if (self.h(cur.data, goal) == 0):
                 break
+            
             for i in cur.generate_child():
                 i.fval = self.f(i, goal)
                 self.open.append(i)
@@ -112,7 +119,8 @@ class Puzzle:
 
             """ sort the open list based on f value """
             self.open.sort(key=lambda x: x.fval, reverse=False)
-
+        print("\nThe total number of moves used are:  "+str(count))
+        
 
 puz = Puzzle(3)
 puz.process()
