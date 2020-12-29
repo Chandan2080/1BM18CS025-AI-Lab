@@ -339,11 +339,11 @@ else:
 
 print("\n\n")
 
-#Testcase-3
-TELL('a')
-TELL('b')
-TELL('c')
-TELL('d')
+print("#Testcase-3")
+TELL('p')
+TELL('q')
+TELL('r')
+
 ans2 = ASK(['or', 'a', 'b', 'c', 'd'])
 
 if ans2 == True:
